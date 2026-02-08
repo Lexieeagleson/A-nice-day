@@ -7,6 +7,7 @@ import CoreData
 @MainActor
 public class HistoryViewModel: ObservableObject {
     @Published public var entries: [WeatherEntry] = []
+    @Published public var errorMessage: String?
     
     private let persistenceService: PersistenceService
     
@@ -25,8 +26,9 @@ public class HistoryViewModel: ObservableObject {
         do {
             try persistenceService.delete(entry)
             loadEntries()
+            errorMessage = nil
         } catch {
-            print("Failed to delete entry: \(error)")
+            errorMessage = "Failed to delete entry: \(error.localizedDescription)"
         }
     }
     

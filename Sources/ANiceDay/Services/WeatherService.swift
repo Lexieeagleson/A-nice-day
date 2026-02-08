@@ -11,7 +11,7 @@ public protocol WeatherServiceProtocol {
 /// WeatherKit implementation of weather service
 /// Requires WeatherKit entitlement in Xcode project
 public class WeatherKitService: WeatherServiceProtocol {
-    private let service = WeatherService.shared
+    private let weatherKitService = WeatherService.shared
     
     public init() {}
     
@@ -20,7 +20,7 @@ public class WeatherKitService: WeatherServiceProtocol {
         let clLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
         
         // Fetch current and daily forecast
-        let weather = try await service.weather(for: clLocation)
+        let weather = try await weatherKitService.weather(for: clLocation)
         
         let current = weather.currentWeather
         let dailyForecast = weather.dailyForecast.first

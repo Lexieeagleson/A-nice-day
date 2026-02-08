@@ -172,9 +172,12 @@ public struct YearSummaryView: View {
     
     // MARK: - Helper Properties
     
+    /// Number of past years to show in year selector
+    private let yearsToShow = 5
+    
     private var availableYears: [Int] {
         let currentYear = Calendar.current.component(.year, from: Date())
-        return Array((currentYear - 5)...currentYear).reversed()
+        return Array((currentYear - yearsToShow)...currentYear).reversed()
     }
 }
 

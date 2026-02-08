@@ -15,8 +15,6 @@ public class PersistenceService: ObservableObject {
     }
     
     private init() {
-        container = NSPersistentContainer(name: "ANiceDay")
-        
         // Create the model programmatically
         let model = Self.createModel()
         container = NSPersistentContainer(name: "ANiceDay", managedObjectModel: model)
