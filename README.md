@@ -1,6 +1,10 @@
 # A Nice Day
 
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-blue?logo=github)](https://lexieeagleson.github.io/A-nice-day/)
+
 A minimal, journal-like iOS app that asks one simple question each day: **"Did you enjoy the weather today?"**
+
+> 🌐 **[View the project page on GitHub Pages](https://lexieeagleson.github.io/A-nice-day/)**
 
 ## Overview
 

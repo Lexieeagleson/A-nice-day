@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Nice Day</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(160deg, #e8f4fd 0%, #fef9f0 50%, #f0faf4 100%);
+      color: #2d3748;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 1.5rem 2rem;
+    }
+
+    header .emoji { font-size: 4rem; display: block; margin-bottom: 1rem; }
+
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #2b6cb0;
+      letter-spacing: -0.5px;
+    }
+
+    header p.tagline {
+      margin-top: 0.75rem;
+      font-size: 1.25rem;
+      color: #4a5568;
+    }
+
+    .badges {
+      margin-top: 1.25rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: #ebf8ff;
+      color: #2b6cb0;
+      border: 1px solid #bee3f8;
+      border-radius: 9999px;
+      padding: 0.25rem 0.85rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    section { margin-top: 3rem; }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #2b6cb0;
+      border-bottom: 2px solid #bee3f8;
+      padding-bottom: 0.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border: 1px solid #e2e8f0;
+    }
+
+    .feature-card .icon { font-size: 1.75rem; margin-bottom: 0.5rem; }
+    .feature-card h3 { font-size: 1rem; font-weight: 600; color: #2d3748; margin-bottom: 0.3rem; }
+    .feature-card p  { font-size: 0.88rem; color: #718096; line-height: 1.5; }
+
+    .steps { counter-reset: step; list-style: none; }
+
+    .steps li {
+      counter-increment: step;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .steps li:last-child { border-bottom: none; }
+
+    .steps li::before {
+      content: counter(step);
+      flex-shrink: 0;
+      width: 2rem;
+      height: 2rem;
+      background: #2b6cb0;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .steps li .text { flex: 1; }
+    .steps li .text strong { display: block; margin-bottom: 0.2rem; }
+    .steps li .text span  { font-size: 0.9rem; color: #4a5568; }
+
+    pre {
+      background: #1a202c;
+      color: #e2e8f0;
+      border-radius: 10px;
+      padding: 1.1rem 1.4rem;
+      overflow-x: auto;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      margin-top: 0.75rem;
+    }
+
+    code { font-family: "SF Mono", "Fira Code", Consolas, monospace; }
+
+    .requirements-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .requirements-list li {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      color: #2d3748;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+
+    .requirements-list li span { font-weight: 600; }
+
+    .cta {
+      margin-top: 3rem;
+      text-align: center;
+      background: white;
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    .cta p { color: #4a5568; margin-bottom: 1.25rem; font-size: 1rem; }
+
+    .btn {
+      display: inline-block;
+      background: #2b6cb0;
+      color: white;
+      text-decoration: none;
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+
+    .btn:hover { background: #2c5282; }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #a0aec0;
+      font-size: 0.85rem;
+      border-top: 1px solid #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <span class="emoji">🌤️</span>
+    <h1>A Nice Day</h1>
+    <p class="tagline">Did you enjoy the weather today?</p>
+    <div class="badges">
+      <span class="badge">iOS 17+</span>
+      <span class="badge">SwiftUI</span>
+      <span class="badge">Xcode 15+</span>
+      <span class="badge">Swift 5.9+</span>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="about">
+      <h2>About</h2>
+      <p style="line-height:1.7;color:#4a5568;">
+        <strong>A Nice Day</strong> is a minimal, journal-like iOS app that asks one simple question
+        each day: <em>"Did you enjoy the weather today?"</em> It helps you track your daily
+        weather experiences in a calm, non-judgmental way — recording not whether the weather
+        was objectively good, but whether <em>you</em> personally enjoyed it.
+      </p>
+    </section>
+
+    <section id="features">
+      <h2>Features</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="icon">📝</div>
+          <h3>Daily Prompt</h3>
+          <p>One Yes/No question per day — simple and distraction-free.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🌡️</div>
+          <h3>Weather Tracking</h3>
+          <p>Automatically captures temperature, conditions, humidity, and wind speed.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">📍</div>
+          <h3>Location Logging</h3>
+          <p>Records human-readable location (city, state, country) — no raw coordinates.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">📊</div>
+          <h3>Year Summary</h3>
+          <p>Statistics showing enjoyment patterns and weather correlations over the year.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">💾</div>
+          <h3>Local Storage</h3>
+          <p>All data stored privately on your device using Core Data — no cloud, no account.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🎨</div>
+          <h3>Calm Design</h3>
+          <p>Minimal, journal-like aesthetic with soft gradients and intuitive navigation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="requirements">
+      <h2>Requirements</h2>
+      <ul class="requirements-list">
+        <li><span>Xcode</span> 15.0 or later</li>
+        <li><span>iOS</span> 17.0 or later</li>
+        <li><span>Swift</span> 5.9 or later</li>
+        <li><span>macOS</span> Ventura 13+ (for Xcode)</li>
+      </ul>
+    </section>
+
+    <section id="running">
+      <h2>How to Run</h2>
+      <ol class="steps">
+        <li>
+          <div class="text">
+            <strong>Clone the repository</strong>
+            <span>Download the source code to your Mac.</span>
+            <pre><code>git clone https://github.com/Lexieeagleson/A-nice-day.git
+cd A-nice-day</code></pre>
+          </div>
+        </li>
+        <li>
+          <div class="text">
+            <strong>Open in Xcode</strong>
+            <span>Open the Swift Package manifest to launch the project in Xcode.</span>
+            <pre><code>open Package.swift</code></pre>
+          </div>
+        </li>
+        <li>
+          <div class="text">
+            <strong>Select a simulator or device</strong>
+            <span>In the Xcode toolbar, choose an iPhone simulator (iOS 17+) or a connected device.</span>
+          </div>
+        </li>
+        <li>
+          <div class="text">
+            <strong>Build and run</strong>
+            <span>Press <kbd>⌘R</kbd> (or <em>Product → Run</em>) to build and launch the app.</span>
+          </div>
+        </li>
+        <li>
+          <div class="text">
+            <strong>Grant location permission</strong>
+            <span>On first launch, allow location access ("While Using App") for full weather functionality. The app still works if denied.</span>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="weatherkit">
+      <h2>Optional: Real Weather Data (WeatherKit)</h2>
+      <p style="color:#4a5568;margin-bottom:1rem;line-height:1.6;">
+        By default the app uses a mock weather service. To enable real weather data via Apple WeatherKit:
+      </p>
+      <ol class="steps">
+        <li>
+          <div class="text">
+            <strong>Add WeatherKit capability in Xcode</strong>
+            <span>Select your project → <em>Signing &amp; Capabilities</em> → <em>+ Capability</em> → <em>WeatherKit</em>.</span>
+          </div>
+        </li>
+        <li>
+          <div class="text">
+            <strong>Enable WeatherKit in HomeViewModel</strong>
+            <pre><code>weatherService: WeatherService(useWeatherKit: true)</code></pre>
+          </div>
+        </li>
+        <li>
+          <div class="text">
+            <strong>Note</strong>
+            <span>WeatherKit requires an Apple Developer account, proper entitlements, and internet access on the device or simulator.</span>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <div class="cta">
+      <p>View the full source code and contribute on GitHub.</p>
+      <a class="btn" href="https://github.com/Lexieeagleson/A-nice-day">View on GitHub →</a>
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; 2024 A Nice Day &mdash; Built with SwiftUI &bull;
+    <a href="https://github.com/Lexieeagleson/A-nice-day" style="color:#4a5568;">GitHub</a>
+  </footer>
+
+</body>
+</html>
